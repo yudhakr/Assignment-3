@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="refresh" content="1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Info</title>
+
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+  <body>
+    <!-- header -->
+    <section class="header">
+      <div class="container header__container">
+        <div class="header__left">
+          <h2 class="header__title">WEATHER INFO</h2>
+          <h4 class="header__subtitle">Now</h4>
+          <div class="header__body">
+            <div class="header__detail">
+              <span class="material-symbols-outlined"> water </span>
+              <div class="value">: {{ .Status.Water }}</div>
+              {{ if isWaterInSafe .Status.Water}}
+              <div class="header__subdetail text-success">
+                <span class="material-symbols-outlined"> check_circle </span>
+                <span>Safe</span>
+              </div>
+              {{ else if isWaterInDanger .Status.Water}}
+              <div class="header__subdetail text-danger">
+                <span class="material-symbols-outlined"> dangerous </span>
+                <span>Danger</span>
+              </div>
+              {{ else }}
+              <div class="header__subdetail text-warning">
+                <span class="material-symbols-outlined"> warning </span>
+                <span>Warning</span>
+              </div>
+              {{ end }}
+            </div>
+            <div class="header__detail">
+              <span class="material-symbols-outlined"> air </span>
+              <div class="value">: {{ .Status.Wind }}</div>
+              {{ if isWindInSafe .Status.Wind}}
+              <div class="header__subdetail text-success">
+                <span class="material-symbols-outlined"> check_circle </span>
+                <span>Safe</span>
+              </div>
+              {{ else if isWindInDanger .Status.Wind}}
+              <div class="header__subdetail text-danger">
+                <span class="material-symbols-outlined"> dangerous </span>
+                <span>Danger</span>
+              </div>
+              {{ else }}
+              <div class="header__subdetail text-warning">
+                <span class="material-symbols-outlined"> warning </span>
+                <span>Warning</span>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="header__right">
+          <div class="header__image">
+            <img src="assets/header.png" alt="header" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- note -->
+    <section class="note">
+      <div class="container note__container">
+        <div class="note__card">
+          <h4 class="card-title">Note</h4>
+          <small class="card-body text-light">Due to inefficient activity, I changed the delay time to 5 seconds and the random maximum to 20.</small>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
